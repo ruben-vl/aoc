@@ -1,7 +1,7 @@
 from functools import reduce
 from operator import mul
 
-def day1(data: dict[int, list[dict[str, int]]]):
+def part1(data: dict[int, list[dict[str, int]]]):
     available = {'red': 12, 'green': 13, 'blue': 14}
     game_id_count = 0
     for game, setlist in data.items():
@@ -14,7 +14,7 @@ def day1(data: dict[int, list[dict[str, int]]]):
             game_id_count += game
     return game_id_count
 
-def day2(data: dict[int, list[dict[str, int]]]):
+def part2(data: dict[int, list[dict[str, int]]]):
     powers = []
     for setlist in data.values():
         minimum = dict()
@@ -34,5 +34,6 @@ if __name__ == "__main__":
     games = {int(game[5:]): sets.split(';') for game, sets in game_split}
     games = {iden: map(lambda x: x.strip().split(','), set_arr) for iden, set_arr in games.items()}
     games = {iden: list(map(lambda y: {spl.strip().split(' ')[1]: int(spl.strip().split(' ')[0]) for spl in y}, x)) for iden, x in games.items()}
-    print(day1(games))
-    print(day2(games))
+    print(games)
+    print(part1(games))
+    print(part2(games))
