@@ -17,7 +17,7 @@ def part1(oneline: str, symbols: set[str]):
             i += 1
     return part_sum
 
-def part2():
+def part2(oneline: str, symbols: set[str]):
     possible_gears = dict()
     i = 0
     while i < 140*140:
@@ -75,4 +75,4 @@ if __name__ == "__main__":
     oneline = reduce(concat, data)
     symbols = get_all_symbols(oneline)
     print(part1(oneline, symbols))
-    print(part2())
+    print(part2(oneline, symbols))
