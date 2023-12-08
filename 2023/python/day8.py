@@ -13,7 +13,7 @@ def part1(data: dict[str, tuple[str, str]], instructions: str) -> int:
 
 def part2(data: dict[str, tuple[str, str]], instructions: str) -> int:
     start_states = [node for node in data.keys() if node[-1] == 'A']
-    repeat_states: dict[str, list[str]] = dict()
+    unique_states = dict()
     for state in start_states:
         instruction_repeat_states = []
         all_states = []
@@ -26,14 +26,12 @@ def part2(data: dict[str, tuple[str, str]], instructions: str) -> int:
                     current_state = data[current_state][0]
                 else:
                     current_state = data[current_state][1]
-        repeat_states[state] = all_states
+        unique_states[state] = all_states
     zidx = {
         start: [idx for idx, s in enumerate(other) if s[-1] == 'Z']
-        for start, other in repeat_states.items()
+        for start, other in unique_states.items()
     }
-    # {'FDA': [19199], 'BPA': [11309], 'BVA': [17621], 'NDA': [20777], 'AAA': [16043], 'QCA': [15517]}
-    return math.lcm(19199, 11309, 17621, 20777, 16043, 15517)
-    
+    return math.lcm(*map(lambda x: x[0], list(zidx.values())))
 
 
 if __name__ == "__main__":
