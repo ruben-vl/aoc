@@ -1,6 +1,7 @@
 from utils.input_parse import (
     single_line_as_string,
-    single_line_as_list
+    single_line_as_list,
+    many_lines_as_list
 )
 
 def part1(data):
