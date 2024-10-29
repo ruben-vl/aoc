@@ -1,8 +1,10 @@
 # Advent of Code
 
-![](https://geps.dev/progress/3)
+My solutions to advent of code challenges.
 
-My solutions to advent of code challenges (12/400).
+## Progress
+
+![](https://geps.dev/progress/0)
 
 ## Overview
 
