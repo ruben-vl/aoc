@@ -1,5 +1,5 @@
 year = 2022; day = 1
-input_file = f"day{'0'+str(day) if day < 10 else str(day)}_{str(year)}.txt"
+input_file = f"{str(year)}_{'0'+str(day) if day < 10 else str(day)}.txt"
 
 def part1():
     with open(input_file, 'r') as f:
