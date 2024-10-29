@@ -1,19 +1,15 @@
-from utils.input_parse import (
-    single_line_as_string,
-    single_line_as_list,
-    many_lines_as_list
-)
+year = 2022; day = 6
+input_file = f"day{'0'+str(day) if day < 10 else str(day)}_{str(year)}.txt"
 
-def part1(data):
-    pass
+def part1():
+    with open(input_file, 'r') as f:
+        input_data = f.read()
 
-def part2(data):
-    pass
+def part2():
+    with open(input_file, 'r') as f:
+        input_data = f.read()
 
 if __name__ == "__main__":
-    day = "01"
-    year = "2015"
-    input_path = f"day{day}_{year}.txt"
-    data = single_line_as_string(input_path)
-    print(f"Part 1: {part1(data)}")
-    print(f"Part 2: {part2(data)}")
+
+    print(f"Part 1: {part1()}")
+    print(f"Part 2: {part2()}")
