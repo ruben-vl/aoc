@@ -1,13 +1,15 @@
 year = 2022; day = 6
 input_file = f"{str(year)}_{'0'+str(day) if day < 10 else str(day)}.txt"
 
+with open(input_file, 'r') as f:
+    input_data = f.read()
+lines = [line.strip() for line in open(input_file, 'r')]
+
 def part1():
-    with open(input_file, 'r') as f:
-        input_data = f.read()
+    pass
 
 def part2():
-    with open(input_file, 'r') as f:
-        input_data = f.read()
+    pass
 
 if __name__ == "__main__":
 
