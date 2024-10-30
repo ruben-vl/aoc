@@ -4,11 +4,11 @@ My solutions to advent of code challenges.
 
 ## Progress
 
-![](https://geps.dev/progress/1)
+![](https://geps.dev/progress/2)
 
 ## Overview
 
-Total: 8/450
+Total: 10/450
 
 Day | 2015<br>P1 P2 | 2016<br>P1 P2 | 2017<br>P1 P2 | 2018<br>P1 P2 | 2019<br>P1 P2 | 2020<br>P1 P2 | 2021<br>P1 P2 | 2022<br>P1 P2 | 2023<br>P1 P2 | 2024<br>P1 P2 |
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
