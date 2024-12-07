@@ -2,42 +2,31 @@ def get_input_parsed():
     raw_lines = [line.strip().split(':') for line in open("2407.txt", 'r')]
     return [(int(agg), [int(e) for e in items.split()]) for agg, items in raw_lines]
 
-def possible_calcs(nums: list[int], intermediate_res: set[int]) -> set[int]:
+def possible_calcs(nums: list[int], intermediate_res: set[int], concat_enabled: bool) -> set[int]:
     if len(nums) == 0: return intermediate_res
     new_intermediates = set()
     next_elem = nums.pop(0)
     for res in intermediate_res:
         new_intermediates.add(res + next_elem)
         new_intermediates.add(res * next_elem)
-    return possible_calcs(nums, new_intermediates)
+        if concat_enabled:
+            new_intermediates.add(int(str(res) + str(next_elem)))
+    return possible_calcs(nums, new_intermediates, concat_enabled)
 
 def part1():
     data = get_input_parsed()
     sum_test_values = 0
     for agg, nums in data:
-        possible_res = possible_calcs(nums[1:], {nums[0]})
+        possible_res = possible_calcs(nums[1:], {nums[0]}, False)
         if agg in possible_res:
             sum_test_values += agg
     return sum_test_values
-
-def possible_calcs2(nums: list[int], intermediate_res: set[int]) -> set[int]:
-    if len(nums) == 0: return intermediate_res
-    new_intermediates = set()
-    next_elem = nums.pop(0)
-    for res in intermediate_res:
-        new_intermediates.add(res + next_elem)
-        new_intermediates.add(res * next_elem)
-        new_intermediates.add(int(str(res)+str(next_elem)))
-    return possible_calcs2(nums, new_intermediates)
 
 def part2():
     data = get_input_parsed()
     sum_test_values = 0
     for agg, nums in data:
-        possible_res = possible_calcs2(nums[1:], {nums[0]})
-        # print(agg)
-        # print(nums)
-        # print(possible_res)
+        possible_res = possible_calcs(nums[1:], {nums[0]}, True)
         if agg in possible_res:
             sum_test_values += agg
     return sum_test_values
