@@ -13,25 +13,15 @@ def possible_calcs(nums: list[int], intermediate_res: set[int], concat_enabled: 
             new_intermediates.add(int(str(res) + str(next_elem)))
     return possible_calcs(nums, new_intermediates, concat_enabled)
 
-def part1():
+def solve(concat_enabled: bool) -> int:
     data = get_input_parsed()
     sum_test_values = 0
     for agg, nums in data:
-        possible_res = possible_calcs(nums[1:], {nums[0]}, False)
+        possible_res = possible_calcs(nums[1:], {nums[0]}, concat_enabled)
         if agg in possible_res:
             sum_test_values += agg
     return sum_test_values
-
-def part2():
-    data = get_input_parsed()
-    sum_test_values = 0
-    for agg, nums in data:
-        possible_res = possible_calcs(nums[1:], {nums[0]}, True)
-        if agg in possible_res:
-            sum_test_values += agg
-    return sum_test_values
-
 
 if __name__ == "__main__":
-    print(f"Part 1: {part1()}")
-    print(f"Part 2: {part2()}")
+    print(f"Part 1: {solve(concat_enabled=False)}")
+    print(f"Part 2: {solve(concat_enabled=True)}")
