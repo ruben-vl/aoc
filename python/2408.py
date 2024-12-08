@@ -1,7 +1,7 @@
 from itertools import product
 
 def get_input_raw() -> list[str]:
-    return [line.strip() for line in open("2408test.txt")]
+    return [line.strip() for line in open("2408.txt")]
 
 def get_all_char_positions() -> set[tuple[int, int, str]]:
     return {(row_idx, col_idx, character)
@@ -19,7 +19,7 @@ def antinodes(character1, character2) -> set[tuple[int, int]]:
     else:
         antinode1 = min(row_idx1, row_idx2) - row_diff, max(col_idx1, col_idx2) + col_diff
         antinode2 = max(row_idx1, row_idx2) + row_diff, min(col_idx1, col_idx2) - col_diff
-    return {node for node in {antinode1, antinode2} if 0 <= node[0] < 12 and 0 <= node[1] < 12}
+    return {node for node in {antinode1, antinode2} if 0 <= node[0] < 50 and 0 <= node[1] < 50}
 
 def part1():
     all_antinodes = set()
