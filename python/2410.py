@@ -41,11 +41,34 @@ def reachable_neighbors(
         if neighbor and topographic_map[neighbor[0]][neighbor[1]] == reachable_height
     }
 
-
 def part2():
     topographic_map = [[int(e) for e in line.strip()] for line in open("2410.txt")]
+    trailhead_rating = 0
+    for row_idx, row in enumerate(topographic_map):
+        for col_idx, height in enumerate(row):
+            if height == 0:
+                all_paths = reachable_paths((row_idx, col_idx), topographic_map)
+                for path in all_paths:
+                    start_row, start_col = path[0]
+                    end_row, end_col = path[-1]
+                    if topographic_map[start_row][start_col] == 0 and topographic_map[end_row][end_col] == 9:
+                        trailhead_rating += 1
+    return trailhead_rating
 
-
+def reachable_paths(
+        starting_position: tuple[int, int],
+        topographic_map: list[list[int]]
+) -> set[tuple[tuple[int, int],...]]:
+    considered_paths = set()
+    paths_to_extend = {(starting_position,)}
+    while len(paths_to_extend) > 0:
+        next_path = paths_to_extend.pop()
+        considered_paths.add(next_path)
+        last_position = next_path[-1]
+        neighbors = reachable_neighbors(last_position, topographic_map)
+        new_paths = {next_path + (neighbor,) for neighbor in neighbors}
+        paths_to_extend.update(new_paths)
+    return considered_paths
 
 if __name__ == "__main__":
     print(f"Part 1: {part1()}")
